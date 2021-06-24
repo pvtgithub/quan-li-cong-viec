@@ -1,25 +1,49 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import AddJob from './components/TaskForm';
+import Table from './components/Table';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { SnackbarProvider } from "notistack";
+import Login from './pages/login';
+import Main from './components/main';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      tasks : [], //id : unique,name,status
+      DisplayForm: false
+    }
+  }
+
+  onSubmit =(data) =>{
+    var randomstring = require('randomstring');
+    var {tasks} = this.state;
+    data.id = randomstring.generate();
+    tasks.push(data);
+    this.setState({
+      tasks :tasks
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+  render() {
+    return (
+      <SnackbarProvider>
+        <Router>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/">
+              <Main/>
+            </Route>
+          </Switch>
+        </Router>
+      </SnackbarProvider>
+    );
+  }
 }
 
 export default App;

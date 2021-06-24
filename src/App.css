@@ -12,6 +12,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.panel-header{
+  background-color: bisque;
+  height: 50px;
+}
 
 .App-header {
   background-color: #282c34;
@@ -35,4 +39,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+.mr5{
+  margin-right: 5px;
+}
+.ml100{
+  margin-left: 190px;
 }
