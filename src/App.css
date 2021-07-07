@@ -43,6 +43,15 @@
 .mr5{
   margin-right: 5px;
 }
+.mt5{
+  margin: 10px;
+}
 .ml100{
   margin-left: 190px;
+}
+.container{
+  margin-top: 25px;
+}
+.form-control{
+  margin-top: 20px;
 }
